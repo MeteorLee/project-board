@@ -13,4 +13,3 @@ public class Article {
     private LocalDateTime modifiedAt; // 수정일시
     private String modifiedBy; // 수정자
 }
- 
