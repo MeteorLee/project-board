@@ -27,10 +27,10 @@ spring:
 
 ---
 
-spring:
-  config.activate.on-profile: testdb # profile 이 testdb 인 상황에서만 아래 설정을 읽음
+#spring:
+#  config.activate.on-profile: testdb # profile 이 testdb 인 상황에서만 아래 설정을 읽음
 #  datasource:
 #    url: jdbc:h2:mem:board;mode=mysql
 #    driver-class-name: org.h2.Driver
 #  sql.init.mode: always
-#  test.database.replace: none
+#  test.database.replace: none  # test 상황에서 스프링에서 자동으로 테스트 DB를 설정하는 것을 막아주고 설정한 db를 사용하게 만들어줌
