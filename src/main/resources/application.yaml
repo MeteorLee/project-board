@@ -1,0 +1,36 @@
+debug: false
+management.endpoints.web.exposure.include: "*"
+
+logging:
+  level:
+    com.projectboard: debug
+    org.springframework.web.servlet: debug # request 와 response 를 debug 레벨 로그로 보여줌
+    org.hibernate.type.descriptor.sql.BasicBinder: trace # sql 쿼리문 로그에서 파라미터 값이 ???로 나오는데 실제 값을 보여줌
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/board
+    username: HoSng
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    defer-datasource-initialization: true # 실행할 때 초기 데이터 베이스에 쿼리문을 넣을 때 사용 / 파일 이름: data.sql
+    hibernate:
+      ddl-auto: create # entity (domain) 을 JPA 에서 자동으로 ddl 을 통해서 데이터 베이스에 테이블로 만들어줌
+    show-sql: true # sql 쿼리 문을 로그로 보여줌
+    properties:
+      hibernate: # 스프링 Data JPA 의 기본 구현체가 Hibernate / Hibernate ORM
+        format_sql: true # sql 쿼리문을 보기 좋게 꾸며서 보여줌 (가독성 상승)
+        default_batch_fetch_size: 100
+  h2.console.enabled: false
+  sql.init.mode: always # 초기 data.sql 에서 실행될 쿼리가 어느 상황에서 실행될 지 결정 / 지금은 매번
+
+---
+
+spring:
+  config.activate.on-profile: testdb # profile 이 testdb 인 상황에서만 아래 설정을 읽음
+#  datasource:
+#    url: jdbc:h2:mem:board;mode=mysql
+#    driver-class-name: org.h2.Driver
+#  sql.init.mode: always
+#  test.database.replace: none
