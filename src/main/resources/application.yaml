@@ -22,7 +22,6 @@ spring:
       hibernate: # 스프링 Data JPA 의 기본 구현체가 Hibernate / Hibernate ORM
         format_sql: true # sql 쿼리문을 보기 좋게 꾸며서 보여줌 (가독성 상승)
         default_batch_fetch_size: 100
-  h2.console.enabled: false
   sql.init.mode: always # 초기 data.sql 에서 실행될 쿼리가 어느 상황에서 실행될 지 결정 / 지금은 매번
 
 ---
