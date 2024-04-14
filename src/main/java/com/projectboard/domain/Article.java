@@ -23,9 +23,9 @@ import java.util.Set;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy"),
 })
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 @Entity
-public class Article {
+public class Article extends AuditingFields {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,10 +41,10 @@ public class Article {
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
-    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt; // 생성일시
-    @CreatedBy @Column(nullable = false, length = 100) private String createdBy; // 생성자
-    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt; // 수정일시
-    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy; // 수정자
+//    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt; // 생성일시
+//    @CreatedBy @Column(nullable = false, length = 100) private String createdBy; // 생성자
+//    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt; // 수정일시
+//    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy; // 수정자
 
     /* Hibernate 는 entity 에 기본 생성자가 있도록 요구함.
     그런데 기본 생성자는 public 이므로 외부에서 만드는 것을 막고자 protected 로 설정.
